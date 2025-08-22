@@ -27,7 +27,7 @@ smartthing_extra:
 
 3. Restart Home Assistant.
 
-4. After restart, the new service `smartthing_extra.sync_time`` will be available in Developer Tools → Services.
+4. After restart, the new service `smartthing_extra.sync_time` will be available in Developer Tools → Services.
 
 ---
 
