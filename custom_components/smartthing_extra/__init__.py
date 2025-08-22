@@ -1,20 +1,17 @@
 from __future__ import annotations
 
-from homeassistant.helpers.typing import ConfigType
-from .services import async_register_services, async_unregister_services
-
-from __future__ import annotations
 
 import logging
 from datetime import datetime
 from typing import Optional, Tuple
 
-from homeassistant.core import HomeAssistant
-from homeassistant.config_entries import ConfigEntry, SOURCE_IMPORT
 from homeassistant.components.smartthings.const import DOMAIN as ST_DOMAIN
-from homeassistant.config_entries import ConfigEntryState
+from homeassistant.config_entries import ConfigEntry, ConfigEntryState, SOURCE_IMPORT
+from homeassistant.core import HomeAssistant
+from homeassistant.helpers.typing import ConfigType
 
 from .const import DOMAIN
+from .services import async_register_services, async_unregister_services
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -34,7 +31,7 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up SmartThings Extra from a config entry."""
 
-    await async_register_services(hass)
+    await async_register_services(hass, entry)
 
     return True
 

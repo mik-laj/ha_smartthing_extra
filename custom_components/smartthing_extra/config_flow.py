@@ -11,6 +11,9 @@ from .const import DOMAIN
 class SmartThingExtraConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     """Config flow for SmartThings Extra."""
 
+    DOMAIN = DOMAIN
+    CONNECTION_CLASS = config_entries.CONN_CLASS_CLOUD_POLL
+
     async def async_step_user(self, user_input=None):
         # Single-instance guard
         for entry in self._async_current_entries():
@@ -23,9 +26,6 @@ class SmartThingExtraConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         ]
         if not st_entries:
             return self.async_abort(reason="no_smartthings")
-
-        if user_input is None:
-            return self.async_show_form(step_id="user", data_schema=None)
 
         return self.async_create_entry(title="SmartThings Extra", data={})
 
