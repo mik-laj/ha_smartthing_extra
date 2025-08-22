@@ -1,0 +1,5 @@
+{
+    "services": {
+        "sync_time": {"service": "mdi:timer-sync"}
+    }
+}
