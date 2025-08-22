@@ -12,17 +12,22 @@ It does **not** use a Personal Access Token — instead it reuses the SmartThing
 ```
 config/
 └── custom_components/
-└── smartthing_extra/
-├── **init**.py
-├── manifest.json
-├── services.yaml
-└── README.md
+  └── smartthing_extra/
+    ├── __init__.py
+    ├── manifest.json
+    └── services.yaml
 
-````
+```
 
-2. Restart Home Assistant.
+2. Add the component to your `configuration.yaml`:
 
-3. After restart, the new service `smartthing_extra.sync_time` will be available in Developer Tools → Services.
+```yaml
+smartthing_extra:
+```
+
+3. Restart Home Assistant.
+
+4. After restart, the new service `smartthing_extra.sync_time`` will be available in Developer Tools → Services.
 
 ---
 
@@ -49,7 +54,7 @@ The service automatically:
     metadata: {}
     data:
       device_id: e92fdc827a68e76c6025876d90174f84
-````
+```
 
 ### Automation: Sync clock at HA startup
 

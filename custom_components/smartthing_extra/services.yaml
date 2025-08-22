@@ -1,0 +1,13 @@
+sync_time:
+  name: Sync Clock on Samsung devices via SmartThings
+  description: Set the current clock on Samsung ovens through the SmartThings integration.
+  fields:
+    device_id:
+      name: Device
+      description: The target device for this action.
+      required: true
+      example: "abcd1234efghijklmnop"
+      selector:
+        device:
+          filter:
+            - integration: smartthings

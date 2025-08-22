@@ -1,0 +1,9 @@
+{
+    "domain": "smartthing_extra",
+    "name": "SmartThings Extra",
+    "version": "0.2.0",
+    "after_dependencies": ["smartthings"],
+    "requirements": [],
+    "codeowners": ["@mik-laj"],
+    "iot_class": "cloud_push"
+}
