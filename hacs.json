@@ -1,0 +1,7 @@
+{
+  "name": "SmartThings Extra",
+  "render_readme": true,
+  "country": "PL",
+  "homeassistant": "2025.8.0",
+  "iot_class": "cloud_push"
+}
