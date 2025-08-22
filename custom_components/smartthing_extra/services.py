@@ -70,4 +70,11 @@ async def async_register_services(hass: HomeAssistant) -> bool:
         _LOGGER.info("Finished sync: response=%s", result)
 
     hass.services.async_register(DOMAIN, "sync_time", handle_sync_time)
-    return True
+
+
+async def async_unregister_services(hass: HomeAssistant) -> bool:
+    try:
+        hass.services.async_remove(DOMAIN, "sync_time")
+    except Exception:
+        pass
+    

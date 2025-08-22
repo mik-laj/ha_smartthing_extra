@@ -19,15 +19,11 @@ config/
 
 ```
 
-2. Add the component to your `configuration.yaml`:
+2. Restart Home Assistant.
 
-```yaml
-smartthing_extra:
-```
+3. After restart, Go to **Settings → Devices & Services → Add Integration → SmartThings Extra** and finish setup.
 
-3. Restart Home Assistant.
-
-4. After restart, the new service `smartthing_extra.sync_time` will be available in Developer Tools → Services.
+3. The new service `smartthing_extra.sync_time` will be available in Developer Tools → Services.
 
 ---
 
