@@ -8,7 +8,7 @@
             }
         },
         "abort": {
-            "single_instance_allowed": "Only a single instance is allowed.",
+            "already_configured": "Only a single instance is allowed.",
             "no_smartthings": "SmartThings integration must be set up and running before adding SmartThings Extra."
         }
     },
@@ -20,4 +20,4 @@
             }
         }
     }
-  }
+}

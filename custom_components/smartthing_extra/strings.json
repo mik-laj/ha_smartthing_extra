@@ -1,23 +1,23 @@
 {
-  "title": "SmartThings Extra",
-  "config": {
-      "step": {
-          "user": {
-              "title": "Set up SmartThings Extra",
-              "description": "This integration exposes services to call custom SmartThings commands.\nNo additional configuration is required."
-          }
-      },
-      "abort": {
-          "single_instance_allowed": "Only a single instance is allowed.",
-          "no_smartthings": "SmartThings integration must be set up and running before adding SmartThings Extra."
-      }
-  },
-  "options": {
-      "step": {
-          "init": {
-              "title": "SmartThings Extra options",
-              "description": "No options available."
-          }
-      }
-  }
+    "title": "SmartThings Extra",
+    "config": {
+        "step": {
+            "user": {
+                "title": "Set up SmartThings Extra",
+                "description": "This integration exposes services to call custom SmartThings commands.\nNo additional configuration is required."
+            }
+        },
+        "abort": {
+            "already_configured": "Only a single instance is allowed.",
+            "no_smartthings": "SmartThings integration must be set up and running before adding SmartThings Extra."
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "title": "SmartThings Extra options",
+                "description": "No options available."
+            }
+        }
+    }
 }
