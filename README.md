@@ -1,6 +1,6 @@
 # SmartThings Extra (Home Assistant Custom Component)
 
-This custom component adds a simple service to **synchronize the clock on Samsung ovens** (and other supported Samsung devices) through the **existing SmartThings integration** in Home Assistant.  
+This custom component adds a simple service to **synchronize the clock on Samsung ovens** (and other supported Samsung devices) through the **existing [SmartThings integration](https://www.home-assistant.io/integrations/smartthings/)** in Home Assistant.  
 It does **not** use a Personal Access Token — instead it reuses the SmartThings client and tokens already managed by HA.
 
 ---
@@ -37,7 +37,7 @@ config/
 
 The service automatically:
 - Resolves the SmartThings `deviceId` and the proper SmartThings config entry.
-- Builds the correct `execute` command with the current system time (`YYYY-MM-DDTHH:MM:SS`).
+- Builds the correct `execute` command with the current system time. The time is sent in local time without timezone offset (e.g. `2025-08-22T13:37:00`).
 - Sends it to the device through SmartThings Cloud.
 
 ---
@@ -70,13 +70,44 @@ mode: single
 
 ```
 
+## Service: `smartthing_extra.execute_command`
+
+### Fields
+
+| Field       | Required | Description                                                                 |
+|-------------|----------|-----------------------------------------------------------------------------|
+| `device_id` | yes      | The **HA device_id** of your Samsung oven (from *Settings → Devices*). Only SmartThings devices can be selected. |
+| `capability`| yes      | The name of the SmartThing capability. It need to be key of [pysmartthing.capability.Capability](https://github.com/pySmartThings/pysmartthings/blob/main/src/pysmartthings/capability.py) enum class. |
+| `command`.  | yes      | The name of the command. It need to be key of [pysmartthing.command.Command](https://github.com/pySmartThings/pysmartthings/blob/main/src/pysmartthings/command.py) enum class. |
+| `component`.| yes      | The name of the component. |
+| `arguments`.| no       | The arguments that will be passed to command. It is a free-form object. |
+
+The service automatically:
+- Resolves the SmartThings `deviceId` and the proper SmartThings config entry.
+- Validate capability and command arguments.
+- Sends command to the device through SmartThings Cloud.
+
+---
+
+## Example Usage
+
+### One-time service call
+
+```yaml
+  - action: smartthing_extra.send_command
+    data:
+      component: main
+      device_id: e92fdc827a68e76c6025876d90174f84
+      capability: refresh
+      command: refresh
+```
+
 ---
 
 ## Notes
 
 * Only works for devices connected through the **SmartThings integration**.
 * No PAT (personal access token) needed — tokens are handled by HA’s built-in SmartThings integration.
-* The time is sent in local time without timezone offset (e.g. `2025-08-22T13:37:00`).
 
 ---
 

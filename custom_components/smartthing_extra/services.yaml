@@ -28,15 +28,15 @@ send_command:
 
     capability:
       name: Capability
-      description: The name of key in [pysmartthing.capability.Capability](https://github.com/pySmartThings/pysmartthings/blob/main/src/pysmartthings/capability.py) enum class.
+      description: The name of the SmartThing capability. It need to be key of [pysmartthing.capability.Capability](https://github.com/pySmartThings/pysmartthings/blob/main/src/pysmartthings/capability.py) enum class.
       required: true
       example: "REFRESH"
       selector:
         text:
-    
+
     command:
       name: Command
-      description: The name of key in [pysmartthing.command.Command](https://github.com/pySmartThings/pysmartthings/blob/main/src/pysmartthings/command.py) enum class.
+      description: The name of the command. It need to be key of [pysmartthing.command.Command](https://github.com/pySmartThings/pysmartthings/blob/main/src/pysmartthings/command.py) enum class.
       required: true
       example: "REFRESH"
       selector:
@@ -53,7 +53,7 @@ send_command:
 
     arguments:
       name: Arguments
-      description: The arguments that will be passed to command
+      description: The arguments that will be passed to command.
       required: false
       example: "abcd1234efghijklmnop"
       selector:

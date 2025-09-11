@@ -89,12 +89,12 @@ async def async_register_services(hass: HomeAssistant, entry: ConfigEntry) -> bo
 
         client = entry.runtime_data.client
 
-        capability_param = (call.data.get("capability", "EXECUTE")).upper()
+        capability_param = (call.data.get("capability") or "").upper()
         capability = getattr(Capability, capability_param, None)
         if not capability:
             raise HomeAssistantError(f"Unknown capability: {capability_param}")
 
-        command_param = (call.data.get("command", "EXECUTE")).upper()
+        command_param = (call.data.get("command") or "").upper()
         command = getattr(Command, command_param, None)
         if not command:
             raise HomeAssistantError(f"Unknown command: {command_param}")
@@ -112,7 +112,7 @@ async def async_register_services(hass: HomeAssistant, entry: ConfigEntry) -> bo
             capability=capability,
             command=command,
             component=component,
-            argument=argumets
+            argument=arguments
         )
         result = await client.execute_device_command(**kwargs)
         _LOGGER.debug("Finished command: response=%s", result)
