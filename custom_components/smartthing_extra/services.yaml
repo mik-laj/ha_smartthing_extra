@@ -11,3 +11,50 @@ sync_time:
         device:
           filter:
             - integration: smartthings
+
+send_command:
+  name: Execute commnad on Samsung devices via SmartThings
+  description: Executes the arbitraty command on Samsung device through the SmartThings integration.
+  fields:
+    device_id:
+      name: Device
+      description: The target device for this action.
+      required: true
+      example: "abcd1234efghijklmnop"
+      selector:
+        device:
+          filter:
+            - integration: smartthings
+
+    capability:
+      name: Capability
+      description: The name of key in [pysmartthing.capability.Capability](https://github.com/pySmartThings/pysmartthings/blob/main/src/pysmartthings/capability.py) enum class.
+      required: true
+      example: "REFRESH"
+      selector:
+        text:
+    
+    command:
+      name: Command
+      description: The name of key in [pysmartthing.command.Command](https://github.com/pySmartThings/pysmartthings/blob/main/src/pysmartthings/command.py) enum class.
+      required: true
+      example: "REFRESH"
+      selector:
+        text
+
+    component:
+      name: Component
+      description: The name of component.
+      required: true
+      example: "main"
+      default: "main"
+      selector:
+        text
+
+    arguments:
+      name: Arguments
+      description: The arguments that will be passed to command
+      required: false
+      example: "abcd1234efghijklmnop"
+      selector:
+        object:

@@ -79,11 +79,56 @@ async def async_register_services(hass: HomeAssistant, entry: ConfigEntry) -> bo
 
     entry.async_on_unload(lambda: hass.services.async_remove(DOMAIN, "sync_time"))
 
+    async def handle_send_command(call: ServiceCall) -> None:
+        ha_device_id: str = call.data["device_id"]
+
+        st_device_id, st_entry_id = await _resolve_st_ids(ha_device_id)
+        entry: ConfigEntry | None = hass.config_entries.async_get_entry(st_entry_id)
+        if not entry or not entry.runtime_data:
+            raise HomeAssistantError("SmartThings entry not available or not loaded.")
+
+        client = entry.runtime_data.client
+
+        capability_param = (call.data.get("capability", "EXECUTE")).upper()
+        capability = getattr(Capability, capability_param, None)
+        if not capability:
+            raise HomeAssistantError(f"Unknown capability: {capability_param}")
+
+        command_param = (call.data.get("command", "EXECUTE")).upper()
+        command = getattr(Command, command_param, None)
+        if not command:
+            raise HomeAssistantError(f"Unknown command: {command_param}")
+        component = (call.data.get("component", "main"))
+
+        arguments = call.data.get("arguments", None)
+
+        _LOGGER.debug(
+            "Send command -> device=%s, capability=%s, command=%s, arguments=%s", 
+            st_device_id, capability, command, arguments
+        )
+
+        kwargs = dict(
+            device_id=st_device_id,
+            capability=capability,
+            command=command,
+            component=component,
+            argument=argumets
+        )
+        result = await client.execute_device_command(**kwargs)
+        _LOGGER.debug("Finished command: response=%s", result)
+
+    hass.services.async_register(DOMAIN, "send_command", handle_send_command)
+
+    entry.async_on_unload(lambda: hass.services.async_remove(DOMAIN, "send_command"))
     return True
 
 async def async_unregister_services(hass: HomeAssistant) -> bool:
     try:
         hass.services.async_remove(DOMAIN, "sync_time")
+    except Exception:
+        pass
+    try:
+        hass.services.async_remove(DOMAIN, "send_command")
     except Exception:
         pass
 
