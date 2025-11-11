@@ -7,6 +7,22 @@ It does **not** use a Personal Access Token — instead it reuses the SmartThing
 
 ## Installation
 
+The easiest install is via [HACS](https://hacs.xyz):
+
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=mik-laj&repository=ha_smartthing_extra&category=integration)
+
+1. Click the button above, and install this integration via HACS.
+1. Restart Home Assistant.
+
+Then click the button below to configure the integration in your Home Assistant instance:
+
+[![Open your Home Assistant instance and start setting up a new integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=smartthing_extra)
+
+
+### Manual installation
+
+If you prefer, you can also install this integration manually.
+
 1. Copy the folder `smartthing_extra` into your Home Assistant `custom_components/` directory:
 
 ```
@@ -21,9 +37,10 @@ config/
 
 2. Restart Home Assistant.
 
-3. After restart, Go to **Settings → Devices & Services → Add Integration → SmartThings Extra** and finish setup.
+3. Then click the button below to configure the integration in your Home Assistant instance:
 
-3. The new service `smartthing_extra.sync_time` will be available in Developer Tools → Services.
+[![Open your Home Assistant instance and start setting up a new integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=smartthing_extra)
+
 
 ---
 
