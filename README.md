@@ -7,12 +7,15 @@ It does **not** use a Personal Access Token — instead it reuses the SmartThing
 
 ## Installation
 
+Install and configure the official [SmartThings integration](https://www.home-assistant.io/integrations/smartthings/).
+
 The easiest install is via [HACS](https://hacs.xyz):
 
 [![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=mik-laj&repository=ha_smartthing_extra&category=integration)
 
 1. Click the button above, and install this integration via HACS.
-1. Restart Home Assistant.
+1. Press the Download button on the bottom right corner.
+1. Restart Home Assistant (you might get a notification under Settings).
 
 Then click the button below to configure the integration in your Home Assistant instance:
 
