@@ -87,7 +87,7 @@ mode: single
 
 ```
 
-## Service: `smartthing_extra.execute_command`
+## Service: `smartthing_extra.send_command`
 
 ### Fields
 
